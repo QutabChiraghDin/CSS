@@ -1,0 +1,19 @@
+p{
+    background-color: rgb(162, 227, 227);
+    color: aliceblue;
+}
+a{
+    background-color: coral;
+    color: rgb(235, 217, 194);
+}
+div{
+    background-color: cadetblue;
+    color: bisque;
+}
+span{
+    background-color: cornflowerblue;
+    color: darksalmon;
+}
+body{
+    background-color: rgb(7, 11, 11);
+}
