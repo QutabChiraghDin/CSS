@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Neon Login</title>
+
+    <style>
+
+        /* Remove default spacing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main page */
+        body {
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #050505;
+        }
+
+        /* Moving wallpaper */
+        .wallpaper {
+            position: fixed;
+            width: 200%;
+            height: 200%;
+
+            background:
+                radial-gradient(circle at 20% 30%, #ff00ff55, transparent 25%),
+                radial-gradient(circle at 80% 20%, #00ffff55, transparent 25%),
+                radial-gradient(circle at 50% 80%, #7b00ff55, transparent 30%),
+                linear-gradient(45deg, #020024, #090979, #00d4ff);
+
+            animation: moveWallpaper 12s linear infinite;
+
+            z-index: -2;
+        }
+
+        /* Wallpaper animation */
+        @keyframes moveWallpaper {
+
+            0% {
+                transform: translate(-10%, -10%) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-30%, -20%) rotate(5deg);
+            }
+
+            100% {
+                transform: translate(-10%, -10%) rotate(0deg);
+            }
+        }
+
+        /* Dark overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            z-index: -1;
+        }
+
+        /* Login box */
+        .login-box {
+            width: 360px;
+            padding: 40px;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 0 10px #00ffff,
+                0 0 30px #00ffff,
+                inset 0 0 20px #00ffff22;
+        }
+
+        /* Heading */
+        h1 {
+            text-align: center;
+            color: #00ffff;
+
+            margin-bottom: 30px;
+
+            font-size: 35px;
+
+            text-shadow:
+                0 0 5px #00ffff,
+                0 0 15px #00ffff,
+                0 0 30px #00ffff;
+        }
+
+        /* Input area */
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+
+            color: #ffffff;
+
+            margin-bottom: 8px;
+        }
+
+        /* Inputs */
+        .input-box input {
+            width: 100%;
+            padding: 13px;
+
+            background: transparent;
+
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+
+            outline: none;
+
+            color: white;
+            font-size: 16px;
+
+            box-shadow: 0 0 8px #ff00ff;
+
+            transition: 0.3s;
+        }
+
+        /* Input focus */
+        .input-box input:focus {
+            border-color: #00ffff;
+
+            box-shadow:
+                0 0 10px #00ffff,
+                0 0 20px #00ffff;
+        }
+
+        /* Placeholder */
+        input::placeholder {
+            color: #cccccc;
+        }
+
+        /* Remember + forgot */
+        .options {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+
+            color: white;
+            font-size: 14px;
+        }
+
+        .options a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        .options a:hover {
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* Login button */
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #00ffff;
+
+            color: #000;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 10px #00ffff,
+                0 0 25px #00ffff;
+
+            transition: 0.3s;
+        }
+
+        /* Button hover */
+        .login-btn:hover {
+            background: #ff00ff;
+
+            color: white;
+
+            box-shadow:
+                0 0 10px #ff00ff,
+                0 0 25px #ff00ff,
+                0 0 50px #ff00ff;
+
+            transform: scale(1.03);
+        }
+
+        /* Register text */
+        .register {
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: white;
+        }
+
+        .register a {
+            color: #ff00ff;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 450px) {
+
+            .login-box {
+                width: 90%;
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Moving wallpaper -->
+    <div class="wallpaper"></div>
+
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+
+    <!-- Login Form -->
+    <div class="login-box">
+
+        <h1>LOGIN</h1>
+
+        <form>
+
+            <div class="input-box">
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <div class="options">
+
+                <label>
+                    <input type="checkbox">
+                    Remember me
+                </label>
+
+                <a href="#">Forgot Password?</a>
+
+            </div>
+
+            <button class="login-btn" type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <div class="register">
+            Don't have an account?
+            <a href="#">Register</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
