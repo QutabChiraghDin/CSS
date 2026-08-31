@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mini Website</title>
+
+    <!-- Internal CSS -->
+    <style>
+
+        /* General */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #222;
+        }
+
+
+        /* Navbar */
+        header {
+            background-color: #111827;
+            padding: 20px 8%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #38bdf8;
+            font-size: 28px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            height: 500px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #0f172a,
+                #0284c7
+            );
+
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #38bdf8;
+            color: #111827;
+
+            padding: 14px 30px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: white;
+        }
+
+
+        /* Services */
+        .services {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 35px;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+
+            width: 280px;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: #0284c7;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card button {
+            background-color: #0284c7;
+            color: white;
+
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+
+        /* About */
+        .about {
+            background-color: #e0f2fe;
+
+            text-align: center;
+
+            padding: 70px 15%;
+        }
+
+        .about h2 {
+            font-size: 35px;
+            margin-bottom: 25px;
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* Contact */
+        .contact {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        input,
+        textarea {
+            padding: 15px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        form button {
+            padding: 14px;
+
+            background-color: #0284c7;
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+
+        <nav>
+
+            <h2 class="logo">MyWebsite</h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+
+        <div>
+
+            <h1>Welcome to My Website</h1>
+
+            <p>
+                Learn HTML and CSS by creating beautiful websites.
+            </p>
+
+            <a href="#services" class="btn">
+                Explore Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Services -->
+    <section class="services" id="services">
+
+        <h2>Our Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Web Design</h3>
+
+                <p>
+                    We create simple and beautiful website designs.
+                </p>
+
+                <button>Learn More</button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>HTML</h3>
+
+                <p>
+                    HTML is used to create the structure of websites.
+                </p>
+
+                <button>Learn More</button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>CSS</h3>
+
+                <p>
+                    CSS is used to make websites beautiful.
+                </p>
+
+                <button>Learn More</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section class="about" id="about">
+
+        <h2>About Us</h2>
+
+        <p>
+            We are learning modern web development using HTML and CSS.
+            Our goal is to create simple, responsive and attractive websites.
+        </p>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <form>
+
+            <input
+                type="text"
+                placeholder="Your Name"
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+            >
+
+            <textarea
+                placeholder="Your Message"
+            ></textarea>
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 MyWebsite | All Rights Reserved
+        </p>
+
+    </footer>
+
+</body>
+</html>
