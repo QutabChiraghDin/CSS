@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #111827, #581c87);
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        nav h2 {
+            color: #c084fc;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #c084fc;
+        }
+
+        .container {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+
+            animation: zoomIn 1s ease;
+        }
+
+        .card {
+            width: 500px;
+            padding: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #c084fc;
+        }
+
+        .card p {
+            line-height: 1.7;
+            color: #e9d5ff;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #c084fc;
+            color: #1e1b4b;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 0 30px #c084fc;
+        }
+
+        .btn:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>MyWebsite</h2>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>About Us</h1>
+
+            <p>
+                This is a mini two-page website created using
+                HTML and CSS. It includes animated buttons,
+                hover effects, smooth animations and a modern UI.
+            </p>
+
+            <a href="index.html" class="btn">
+                ← Back Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
