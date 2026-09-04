@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two Page Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .page {
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #page1 {
+            display: flex;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #4c5fd5;
+        }
+
+        #page2 {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        }
+
+        #page2 button {
+            background: #ff4f70;
+        }
+
+        #page2 button:hover {
+            background: #e83e5d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="page" id="page1">
+
+        <div class="container">
+
+            <h1>Welcome 👋</h1>
+
+            <p>This is the first page of my website.</p>
+
+            <button onclick="showPage2()">
+                Go to Page 2
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAGE 2 -->
+    <div class="page" id="page2">
+
+        <div class="container">
+
+            <h1>Page 2 🚀</h1>
+
+            <p>You are now on the second page.</p>
+
+            <button onclick="showPage1()">
+                Back to Home
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function showPage2() {
+            document.getElementById("page1").style.display = "none";
+            document.getElementById("page2").style.display = "flex";
+        }
+
+        function showPage1() {
+            document.getElementById("page2").style.display = "none";
+            document.getElementById("page1").style.display = "flex";
+        }
+
+    </script>
+
+</body>
+</html>
