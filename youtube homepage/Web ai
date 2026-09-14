@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Website</title>
+
+    <style>
+        /* Remove default spacing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #38bdf8;
+            color: #111827;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            background: white;
+        }
+
+        /* Cards */
+        .services {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .services h2 {
+            margin-bottom: 30px;
+            font-size: 35px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #0002;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #2563eb;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <h2>MyWebsite</h2>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Welcome to My Website</h1>
+
+            <p>
+                Learn, Create and Build Amazing Things.
+            </p>
+
+            <a href="about.html" class="btn">Explore More</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+
+        <h2>What We Offer</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Web Design</h3>
+                <p>
+                    Beautiful and responsive websites using HTML and CSS.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Development</h3>
+                <p>
+                    Modern websites with clean and simple code.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Responsive</h3>
+                <p>
+                    Websites that work perfectly on mobile and desktop.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MyWebsite. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
