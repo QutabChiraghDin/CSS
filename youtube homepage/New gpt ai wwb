@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeuraAI — Future of Intelligence</title>
+
+    <style>
+        /* =========================
+           BASIC RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b16;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+        }
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================= */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #6c5ce7;
+            filter: blur(180px);
+            opacity: 0.15;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #00cec9;
+            filter: blur(180px);
+            opacity: 0.12;
+            right: -150px;
+            bottom: -100px;
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+        nav {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1150px;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 20, 38, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8c7cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8bdd0;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .menu-btn {
+            display: none;
+            background: transparent;
+            color: white;
+            font-size: 25px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            color: #aaa5ff;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8c7cff, #00cec9);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #a6abc0;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: linear-gradient(90deg, #6c5ce7, #00cec9);
+            color: white;
+        }
+
+        .secondary {
+            background: rgba(255,255,255,0.06);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(108,92,231,0.3);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #9499ad;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .stat {
+            padding: 30px;
+            text-align: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+        }
+
+        .stat h3 {
+            font-size: 35px;
+            color: #8c7cff;
+        }
+
+        .stat p {
+            color: #888da0;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+        .cards {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(140,124,255,0.5);
+            background: rgba(255,255,255,0.07);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: rgba(140,124,255,0.15);
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #9297aa;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           AI CHAT DEMO
+        ========================= */
+        .chat-box {
+            max-width: 750px;
+            margin: auto;
+            padding: 25px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+        }
+
+        .messages {
+            min-height: 250px;
+            max-height: 350px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            max-width: 75%;
+            padding: 13px 16px;
+            margin: 10px 0;
+            border-radius: 15px;
+            line-height: 1.5;
+        }
+
+        .bot {
+            background: rgba(140,124,255,0.15);
+        }
+
+        .user {
+            background: rgba(0,206,201,0.15);
+            margin-left: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #101526;
+            color: white;
+        }
+
+        .chat-input button {
+            padding: 0 20px;
+            border-radius: 12px;
+            background: #6c5ce7;
+            color: white;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+        .cta {
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
+            padding: 70px 30px;
+            border-radius: 30px;
+            background: linear-gradient(
+                135deg,
+                rgba(108,92,231,0.18),
+                rgba(0,206,201,0.12)
+            );
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #9da2b5;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            padding: 50px 7%;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+
+        footer .logo {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #777c8f;
+        }
+
+        /* =========================
+           TO TOP BUTTON
+        ========================= */
+        #topBtn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #6c5ce7;
+            color: white;
+            display: none;
+            z-index: 999;
+        }
+
+        /* =========================
+           SCROLL ANIMATION
+        ========================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+        @media(max-width: 800px) {
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                padding: 20px;
+                background: #101526;
+                border-radius: 15px;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media(max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            .chat-input {
+                flex-direction: column;
+            }
+
+            .chat-input button {
+                padding: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <nav>
+
+        <div class="logo">
+            Neura<span>AI</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#tools">AI Tools</a></li>
+            <li><a href="#chat">AI Chat</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         HOME / HERO
+    ========================== -->
+    <section class="hero" id="home">
+
+        <div class="hero-content reveal">
+
+            <div class="badge">
+                ✨ The Future of AI is Here
+            </div>
+
+            <h1>
+                Build the Future
+                <br>
+                with <span class="gradient-text">AI</span>
+            </h1>
+
+            <p>
+                Create smarter ideas, automate your work and
+                explore the possibilities of artificial intelligence
+                with one powerful platform.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#tools" class="btn primary">
+                    Explore AI Tools
+                </a>
+
+                <a href="#chat" class="btn secondary">
+                    Try AI Chat
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATS
+    ========================== -->
+    <section>
+
+        <div class="stats">
+
+            <div class="stat reveal">
+                <h3>50K+</h3>
+                <p>AI Users</p>
+            </div>
+
+            <div class="stat reveal">
+                <h3>120+</h3>
+                <p>AI Tools</p>
+            </div>
+
+            <div class="stat reveal">
+                <h3>99.9%</h3>
+                <p>Uptime</p>
+            </div>
+
+            <div class="stat reveal">
+                <h3>24/7</h3>
+                <p>Availability</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+    <section id="features">
+
+        <div class="section-title reveal">
+
+            <h2>Powerful Features</h2>
+
+            <p>
+                Everything you need to work smarter with AI.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card reveal">
+
+                <div class="icon">🧠</div>
+
+                <h3>Smart AI</h3>
+
+                <p>
+                    Generate ideas, answer questions and
+                    solve complex problems with intelligent AI.
+                </p>
+
+            </div>
+
+
+            <div class="card reveal">
+
+                <div class="icon">⚡</div>
+
+                <h3>Fast Processing</h3>
+
+                <p>
+                    Get quick responses and complete your
+                    tasks without unnecessary waiting.
+                </p>
+
+            </div>
+
+
+            <div class="card reveal">
+
+                <div class="icon">🔒</div>
+
+                <h3>Private & Secure</h3>
+
+                <p>
+                    Your conversations and projects are
+                    designed with privacy and security in mind.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         AI TOOLS
+    ========================== -->
+    <section id="tools">
+
+        <div class="section-title reveal">
+
+            <h2>AI Tools</h2>
+
+            <p>
+                Explore powerful tools for your everyday work.
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card reveal">
+
+                <div class="icon">✍️</div>
+
+                <h3>AI Writer</h3>
+
+                <p>
+                    Generate articles, captions, emails and
+                    creative content.
+                </p>
+
+                <br>
+
+                <button class="btn primary" onclick="toolMessage('AI Writer')">
+                    Try Tool
+                </button>
+
+            </div>
+
+
+            <div class="card reveal">
+
+                <div class="icon">🎨</div>
+
+                <h3>AI Designer</h3>
+
+                <p>
+                    Turn your ideas into beautiful visual
+                    concepts and designs.
+                </p>
+
+                <br>
+
+                <button class="btn primary" onclick="toolMessage('AI Designer')">
+                    Try Tool
+                </button>
+
+            </div>
+
+
+            <div class="card reveal">
+
+                <div class="icon">💻</div>
+
+                <h3>AI Coder</h3>
+
+                <p>
+                    Generate code, understand programming
+                    concepts and debug your projects.
+                </p>
+
+                <br>
+
+                <button class="btn primary" onclick="toolMessage('AI Coder')">
+                    Try Tool
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         AI CHAT
+    ========================== -->
+    <section id="chat">
+
+        <div class="section-title reveal">
+
+            <h2>Try AI Chat</h2>
+
+            <p>
+                This is a front-end AI chat demonstration.
+            </p>
+
+        </div>
+
+
+        <div class="chat-box reveal">
+
+            <div class="messages" id="messages">
+
+                <div class="message bot">
+                    👋 Hello! I'm NeuraAI. How can I help you?
+                </div>
+
+            </div>
+
+
+            <div class="chat-input">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask something..."
+                    onkeydown="handleEnter(event)"
+                >
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT / CTA
+    ========================== -->
+    <section id="contact">
+
+        <div class="cta reveal">
+
+            <h2>
+                Ready to Explore AI?
+            </h2>
+
+            <p>
+                Start building your next idea today.
+            </p>
+
+            <button
+                class="btn primary"
+                onclick="showNotification()"
+            >
+                Get Started 🚀
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <div class="logo">
+            Neura<span>AI</span>
+        </div>
+
+        <p>
+            © 2026 NeuraAI. Built for the future.
+        </p>
+
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+    <button id="topBtn" onclick="goTop()">
+        ↑
+    </button>
+
+
+    <script>
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        function toggleMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList.toggle("active");
+
+        }
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        function revealElements() {
+
+            const elements =
+                document.querySelectorAll(".reveal");
+
+            elements.forEach(element => {
+
+                const position =
+                    element.getBoundingClientRect().top;
+
+                if (position < window.innerHeight - 80) {
+
+                    element.classList.add("show");
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            revealElements
+        );
+
+        revealElements();
+
+
+        /* =========================
+           BACK TO TOP
+        ========================= */
+
+        const topButton =
+            document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 400) {
+
+                topButton.style.display = "block";
+
+            } else {
+
+                topButton.style.display = "none";
+
+            }
+
+        });
+
+
+        function goTop() {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =========================
+           AI CHAT DEMO
+        ========================= */
+
+        function sendMes
