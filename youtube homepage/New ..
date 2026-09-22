@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaX | Modern Website</title>
+
+    <style>
+        /* =========================
+           BASIC RESET
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+        nav {
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 16, 32, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00d9ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #00d9ff;
+        }
+
+        .menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           PAGE SYSTEM
+        ========================== */
+        .page {
+            display: none;
+            min-height: 90vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            width: 400px;
+            height: 400px;
+            background: #00d9ff;
+            border-radius: 50%;
+            position: absolute;
+            filter: blur(150px);
+            opacity: 0.25;
+            animation: float 5s infinite alternate;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(-100px, -50px);
+            }
+
+            to {
+                transform: translate(100px, 50px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00d9ff;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #b7c0d8;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           BUTTON
+        ========================== */
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 30px;
+            background: #00d9ff;
+            color: #061018;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid #00d9ff;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background: #00d9ff;
+            color: #061018;
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aeb8cf;
+        }
+
+        /* =========================
+           CARDS
+        ========================== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #121a30;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #263451;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #00d9ff;
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.1);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 23px;
+        }
+
+        .card p {
+            color: #aeb8cf;
+        }
+
+        /* =========================
+           ABOUT PAGE
+        ========================== */
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-container h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            color: #b7c0d8;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           SERVICES PAGE
+        ========================== */
+        .service-box {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .service-item {
+            background: #121a30;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #00d9ff;
+        }
+
+        .service-item h3 {
+            margin-bottom: 8px;
+        }
+
+        .service-item p {
+            color: #b7c0d8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #070b16;
+            color: #8993aa;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+        @media (max-width: 768px) {
+
+            .menu {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #0b1020;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .about-container h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            NovaX
+        </div>
+
+        <div class="menu" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li>
+                <a onclick="showPage('home')">Home</a>
+            </li>
+
+            <li>
+                <a onclick="showPage('services')">Services</a>
+            </li>
+
+            <li>
+                <a onclick="showPage('about')">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HOME PAGE
+    ========================== -->
+
+    <div id="home" class="page active">
+
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <h1>
+                    Build Something
+                    <span>Amazing</span>
+                </h1>
+
+                <p>
+                    A modern responsive website built with
+                    HTML, CSS and JavaScript.
+                </p>
+
+                <button class="btn" onclick="showPage('services')">
+                    Explore Services
+                </button>
+
+                <button class="btn btn-outline" onclick="showPage('about')">
+                    Learn More
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <section>
+
+            <div class="section-title">
+
+                <h2>Our Features</h2>
+
+                <p>
+                    Everything you need for a modern website.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icon">⚡</div>
+
+                    <h3>Fast</h3>
+
+                    <p>
+                        Lightweight and optimized design
+                        for a smooth experience.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">📱</div>
+
+                    <h3>Responsive</h3>
+
+                    <p>
+                        Works perfectly on mobile,
+                        tablet and desktop.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">🎨</div>
+
+                    <h3>Modern Design</h3>
+
+                    <p>
+                        Clean interface with beautiful
+                        animations and effects.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================
+         SERVICES PAGE
+    ========================== -->
+
+    <div id="services" class="page">
+
+        <section>
+
+            <div class="section-title">
+
+                <h2>Our Services</h2>
+
+                <p>
+                    Professional digital solutions.
+                </p>
+
+            </div>
+
+
+            <div class="service-box">
+
+                <div class="service-item">
+
+                    <h3>🌐 Web Development</h3>
+
+                    <p>
+                        Modern and responsive websites
+                        using HTML, CSS and JavaScript.
+                    </p>
+
+                </div>
+
+
+                <div class="service-item">
+
+                    <h3>🎨 UI/UX Design</h3>
+
+                    <p>
+                        Clean, attractive and
+                        user-friendly interfaces.
+                    </p>
+
+                </div>
+
+
+                <div class="service-item">
+
+                    <h3>📱 Responsive Design</h3>
+
+                    <p>
+                        Websites that look great
+                        on every screen size.
+                    </p>
+
+                </div>
+
+
+                <div class="service-item">
+
+                    <h3>🚀 Website Optimization</h3>
+
+                    <p>
+                        Improve website performance,
+                        speed and user experience.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================
+         ABOUT PAGE
+    ========================== -->
+
+    <div id="about" class="page">
+
+        <section>
+
+            <div class="about-container">
+
+                <h1>About NovaX</h1>
+
+                <p>
+                    NovaX is a modern website concept
+                    created using pure HTML, CSS and
+                    JavaScript.
+                </p>
+
+                <p>
+                    The design focuses on simplicity,
+                    responsiveness, animations and
+                    a professional user experience.
+                </p>
+
+                <button class="btn" onclick="showPage('home')">
+                    Back Home
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 NovaX. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Function to switch between pages
+        function showPage
